@@ -1,3 +1,11 @@
+-- https://github.com/DevMountain/sql-2-afternoon
+
+-- https://postgres.devmountain.com/
+
+
+
+
+
 --Practice joins--
 --.1Get all invoices where the unit_price on the invoice_line is greater than $0.99.
 
@@ -229,3 +237,91 @@ At least 5 joins.
 
 -- ----------------------------------
 -- eCommerce Simulation - No Hints
+
+
+-- CREATE TABLE users (
+--   users_id SERIAL PRIMARY KEY,
+--   name VARCHAR(40),
+--   email VARCHAR(200)
+--   );
+  
+--   CREATE TABLE products (
+--   products_id SERIAL PRIMARY KEY,
+--   name VARCHAR(40),
+--   price INTEGER
+--   );
+  
+--   CREATE TABLE orders (
+--   orders_id SERIAL PRIMARY KEY,
+--   product_id INTEGER REFERENCES products(products_id)
+--   );
+
+-- INSERT INTO orders (product_id)
+--   VALUES(1),(2),(3)
+  
+  
+--   INSERT INTO users (name, email)
+--   VALUES ('Joe', 'joe@gmail.com'),
+--   ('Jim', 'jim@gmail.com'),
+--   ('Steve', 'Steve@gmail.com');
+  
+--   INSERT INTO products (name, price)
+--   VALUES ('Washie', 43.50),
+--   ('Slim Jim', 32.99),
+--   ('Steve',25.95)
+  
+  
+--   Select * from products
+--   JOIN orders o ON o.product_id = products.products_id
+--   WHERE o.orders_id =1
+
+
+
+-- Get all orders.
+
+
+-- Select * from products
+--   JOIN orders o ON o.product_id = products.products_id
+ 
+ 
+ 
+--  Get the total cost of an order ( sum the price of all products on an order ).
+
+-- Select SUM(products.price) FROM products
+-- JOIN orders o ON o.product_id = products.products_id 
+-- GROUP BY o.orders_id 
+
+
+--   ALTER TABLE products
+--   ALTER price
+--   SET DATA TYPE DECIMAL
+
+
+
+-- -- Add a foreign key reference from orders to users.
+
+-- ALTER TABLE orders
+-- ADD COLUMN user_orders INTEGER REFERENCES users(users_id)
+
+
+-- -- -- Update the orders table to link a user to each order.
+
+-- UPDATE orders 
+-- SET user_orders = 3
+-- WHERE orders_id =3;
+
+-- SELECT * FROM orders
+
+
+-- --- -- Get all orders for a user.
+-- SELECT * FROM orders o
+-- JOIN users u ON u.users_id = o.orders_id;
+
+
+-- -- -- Get how many orders each user has.
+
+-- SELECT COUNT(*) FROM orders
+-- GROUP BY user_order
+
+
+
